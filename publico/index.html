@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app='MiAplicacion'>
+<head>
+<!-->
+<!- Últimas CSS compilado y minified --> 
+<link  rel= "stylesheet"  href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"  integrity= "sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"  crossorigin= "anonymous" >
+<!-->
+<! - Tema opcional --> 
+<link  rel= "stylesheet"  href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"  integrity= "sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"  crossorigin= "anonymous" >
+
+<link rel="stylesheet" type="text/css" href="estilo.css">
+
+	<title>App de Listas de Contactos</title>
+</head>
+<body>
+	<div class="container" ng-controller="Principal">
+		<h1>Lista de Contactos</h1>
+		<div>
+			<section class="izquierda">
+				<label>Buscar: </label>
+				<input class="cajaTexto" type="search" ng-model="busqueda">
+			</section>
+			
+		</div>
+		<table id="laTabla" class="table">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Correo</th>
+					<th>Telefono</th>
+					<th>Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><input placeholder="Nombre,apellidos" class="form-control" ng-model="contacto.Nombre"></td>
+					<td><input placeholder="ejemplo@cuenta.com" class="form-control" ng-model="contacto.Correo"></td>
+					<td><input placeholder="8888-88-88" class="form-control" ng-model="contacto.Telefono"></td>
+					<td><button type="button" class="btn btn-success" ng-click="insert()">Añadir Contacto</button></td>
+					<td><button class="btn btn-info" ng-click="update()">Actualizar</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Limpiar</button></td>
+
+                </tr>
+				<tr ng-repeat="contacto in listaContactos | filter: busqueda">
+					<td>{{contacto.Nombre}}</td>
+					<td>{{contacto.Correo}}</td>
+					<td>{{contacto.Telefono}}</td>
+					<td><button type="button" class="btn btn-danger" ng-click="delete(contacto._id)">Eliminar</button></td>
+					<td><button type="button" class="btn btn-warning" ng-click="edit(contacto._id)">Editar</button></td>
+				</tr> 
+					
+			</tbody>
+			
+		</table>
+
+	</div>
+	<div id="GraficoGoogleChart-ejemplo-1" style="width: 800px; height: 600px">
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.12/angular.min.js"></script>
+	
+	<script src="Controladores/controlador.js"></script>
+	<script src="Servicio/servicio.js"></script>
+	<script src="Comunes/request-service.js"></script>
+	
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script> 
+
+</body>
+</html>

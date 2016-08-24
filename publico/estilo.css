@@ -1,0 +1,15 @@
+body{
+    background: #bcbc67;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+}
+
+.cajaTexto{
+	width: 200px;
+	height: 20px;
+	border-radius: 10px;
+	position: right;
+	border-left-style: solid;
+}
+.izquierda{
+	float: right;
+}
